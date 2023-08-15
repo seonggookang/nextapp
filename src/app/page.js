@@ -5,7 +5,9 @@ export default function Home() {
     <>
       <h2>Welcome!</h2>
       Hello, Nextjs!
-      <img src="/hello.png" /> {/* public 밑에 있는 png를 가리킴*/}
+      <br />
+      <img src="/pic.jpg" width={"100px"} />
+      {/* public 밑에 있는 jpg를 가리킴*/}
     </>
   );
 }
