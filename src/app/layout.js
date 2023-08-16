@@ -1,6 +1,7 @@
 // "use client"; // 이 문장 쓰면 layout.js는 Client Component가 됨
 import Link from "next/link";
 import "./globals.css";
+import { Control } from "./Control";
 // import { useEffect, useState } from "react";
 
 export const metadata = {
@@ -19,7 +20,9 @@ export default async function RootLayout({ children }) {
   //   });
   // }, []);
   // 위처럼 비동기적으로 코드를 작성하지않고 아래처럼 작성
-  const resp = await fetch("http://localhost:9999/topics"); // 1. 얘가 실행이 끝날때까지 await
+  const resp = await fetch("http://localhost:9999/topics", {
+    cache: "no-store",
+  }); // 1. 얘가 실행이 끝날때까지 await
   const topics = await resp.json(); // 2. json으로 바꾸라는 명령이 전달
 
   return (
@@ -41,17 +44,7 @@ export default async function RootLayout({ children }) {
           이과정에서 자바스크립트 코드는 뺴고 전송*/}
         </ol>
         {children}
-        <ul>
-          <li>
-            <Link href="create">Create</Link>
-          </li>
-          <li>
-            <Link href="update">Update</Link>
-          </li>
-          <li>
-            <input type="button" value="delete" />
-          </li>
-        </ul>
+        <Control />
       </body>
     </html>
   );
