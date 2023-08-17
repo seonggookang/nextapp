@@ -20,7 +20,7 @@ export default async function RootLayout({ children }) {
   //   });
   // }, []);
   // 위처럼 비동기적으로 코드를 작성하지않고 아래처럼 작성
-  const resp = await fetch("http://localhost:9999/topics", {
+  const resp = await fetch(process.env.NEXT_PUBLIC_API_URL + "topics", {
     cache: "no-store",
   }); // 1. 얘가 실행이 끝날때까지 await
   const topics = await resp.json(); // 2. json으로 바꾸라는 명령이 전달
